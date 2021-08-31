@@ -35,7 +35,7 @@ public class DriverScript {
 		}
 	}
 
-	// Remove @Test after init testing your code
+	// Remove @Test after unit testing your code
 	public void initApplication() {
 		String browser = prop.getProperty("browser");
 		if (browser.equalsIgnoreCase("chrome")) {
@@ -53,9 +53,14 @@ public class DriverScript {
 		driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-		String url = prop.getProperty("devurl");
+		String url = prop.getProperty("qaurl");
 		driver.get(url);
 
+	}
+	
+	public void quitApplication()
+	{
+		driver.close();
 	}
 
 }
