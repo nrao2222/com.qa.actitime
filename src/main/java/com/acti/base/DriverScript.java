@@ -21,6 +21,8 @@ import org.testng.annotations.Test;
 
 public class DriverScript {
 
+	//these are public so as to make them available across different pkg'es in the project.
+	// static as they are in a class but outside any method but dont' need to create an object
 	public static WebDriver driver;
 	public static Properties prop;
 
@@ -41,10 +43,12 @@ public class DriverScript {
 		if (browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "./atbrowsers/chromedriver.exe");
 			driver = new ChromeDriver();
-		} else if (browser.equalsIgnoreCase("firefox")) {
+		} 
+		else if (browser.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver", "./atbrowsers/geckodriver.exe");
 			driver = new FirefoxDriver();
-		} else if (browser.equalsIgnoreCase("edge")) {
+		} 
+		else if (browser.equalsIgnoreCase("edge")) {
 			System.setProperty("webdriver.edge.driver", "./atbrowsers/msedgedriver.exe");
 			driver = new EdgeDriver();
 		}

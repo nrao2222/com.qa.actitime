@@ -19,6 +19,8 @@ public class LoginPage extends DriverScript {
 	@FindBy(id="username") WebElement textboxusername;
 	@FindBy(name="pwd") WebElement textboxpassword;
 	@FindBy(xpath="//div[text()='Login ']") WebElement buttonLogin;
+	@FindBy(xpath="//span[@class='errormsg']") WebElement textErrorLoginMessage;
+	
 	
 //****************************** Page Initialization **********************************//
 	public LoginPage()
@@ -40,5 +42,10 @@ public class LoginPage extends DriverScript {
 	public void clickLogin()
 	{
 		buttonLogin.click();
+	}
+	
+	public String verifyErrorMessage()
+	{
+		return textErrorLoginMessage.getText();
 	}
 }
