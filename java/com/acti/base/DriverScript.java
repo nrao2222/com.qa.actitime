@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
+//import org.testng.annotations.*;
 
 /*
  * Title: DriverScript
@@ -25,7 +27,7 @@ public class DriverScript {
 	// static as they are in a class but outside any method but dont' need to create an object
 	public static WebDriver driver;
 	public static Properties prop;
-
+ 
 	public DriverScript() {
 		try {
 			File src = new File("./atconfig/config.properties");
@@ -33,13 +35,15 @@ public class DriverScript {
 			prop = new Properties();
 			prop.load(fis);
 		} catch (Exception e) {
-			System.out.println("UNable to read properties file.Please check again. " + e.getMessage());
+			System.out.println("Unable to read properties file.Please check again. " + e.getMessage());
 		}
 	}
 
 	// Remove @Test after unit testing your code
+	//@Test(priority=1)
 	public void initApplication() {
 		String browser = prop.getProperty("browser");
+		
 		if (browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "./atbrowsers/chromedriver.exe");
 			driver = new ChromeDriver();
@@ -58,12 +62,17 @@ public class DriverScript {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		String url = prop.getProperty("qaurl");
+		//String url = prop.getProperty("devurl");
+	
+		System.out.println("%%%%%%Url to fetch is: " +url);
 		driver.get(url);
 
 	}
 	
+	//@Test(priority=2)
 	public void quitApplication()
 	{
+		System.out.println("In quitApplication()");
 		driver.close();
 	}
 

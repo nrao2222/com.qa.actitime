@@ -19,6 +19,9 @@ public class EnterTimePage extends DriverScript {
 	
 	@FindBy(id="logoutLink") WebElement linkLogout;
 	@FindBy(xpath="//a[@class='userProfileLink username ']") WebElement textuserLoggedin;
+	//@FindBy(id="container_tasks") WebElement menuTask;
+	@FindBy(xpath="//div[@id='container_tasks']") WebElement menuTask;
+	//@FindBy(xpath="//a[@class='content selected tasks']") WebElement menuTask;
 	
 //****************************** Page Initialization **********************************//
 	public EnterTimePage()
@@ -27,13 +30,20 @@ public class EnterTimePage extends DriverScript {
 	}
 	
 //****************************** Page Actions **********************************//
-	public void clickLogout()
+	public void clickLogout() throws InterruptedException
 	{
+		Thread.sleep(2000);
+		System.out.println("+++++++++In clickLogout()+++++++");
 		linkLogout.click();
 	}
 	
 	public String verifyUserLoggedIn()
 	{
 		return textuserLoggedin.getText();
+	}
+	
+	public void clickTaskMenu()
+	{
+		menuTask.click();
 	}
 }
